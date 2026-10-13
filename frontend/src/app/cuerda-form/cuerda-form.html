@@ -1,0 +1,93 @@
+<dialog #dialog class="dialog" (click)="$event.target === dialog && cerrar()">
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="dialog-body">
+    <header class="dialog-header">
+      <h2>{{ editando() ? 'Editar set de cuerdas' : 'Nuevo set de cuerdas' }}</h2>
+      <button type="button" class="icon-btn" (click)="cerrar()" aria-label="Cerrar">✕</button>
+    </header>
+
+    <div class="form-grid">
+      <fieldset class="field full">
+        <legend>Guitarra</legend>
+        <div class="segmented">
+          @for (t of tipos; track t.valor) {
+            <label>
+              <input type="radio" formControlName="tipo" [value]="t.valor" />
+              <span><i class="dot" [attr.data-tipo]="t.valor"></i>{{ t.etiqueta }}</span>
+            </label>
+          }
+        </div>
+      </fieldset>
+
+      <label class="field full">
+        <span>Cuerdas</span>
+        <input formControlName="descripcion" placeholder="Marca, modelo y calibres (p. ej. Ernie Ball 2221 10-46)" />
+        @if (form.controls.descripcion.touched && form.controls.descripcion.invalid) {
+          <small class="field-error">La descripción es obligatoria.</small>
+        }
+      </label>
+
+      <label class="field">
+        <span>Fecha de compra</span>
+        <div class="with-action">
+          <input type="date" formControlName="fechaCompra" />
+          <button type="button" class="link-btn" (click)="hoy('fechaCompra')">Hoy</button>
+        </div>
+      </label>
+
+      <label class="field">
+        <span>Fecha de cambio</span>
+        <div class="with-action">
+          <input type="date" formControlName="fechaCambio" />
+          <button type="button" class="link-btn" (click)="hoy('fechaCambio')">Hoy</button>
+        </div>
+      </label>
+
+      <label class="field">
+        <span>Cantidad (packs)</span>
+        <input type="number" min="1" formControlName="cantidad" />
+      </label>
+
+      <div class="field">
+        <span>Imagen</span>
+        <div class="image-picker">
+          @if (preview(); as src) {
+            <img [src]="src" alt="Vista previa" />
+          } @else {
+            <div class="image-empty">Sin imagen</div>
+          }
+          <div class="image-actions">
+            <label class="btn btn-secondary btn-sm">
+              {{ preview() ? 'Cambiar' : 'Subir' }}
+              <input #file type="file" accept="image/*" hidden (change)="elegirImagen($event)" />
+            </label>
+            @if (preview()) {
+              <button type="button" class="link-btn" (click)="eliminarImagen(file)">Quitar</button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <label class="field full">
+        <span>Notas</span>
+        <textarea formControlName="notas" rows="3" placeholder="Guitarra en la que se montaron, sensaciones, tienda…"></textarea>
+      </label>
+    </div>
+
+    @if (error(); as e) {
+      <p class="form-error" role="alert">{{ e }}</p>
+    }
+
+    <footer class="dialog-footer">
+      @if (editando()) {
+        <button type="button" class="btn btn-danger" [disabled]="guardando()" (click)="borrar()">
+          {{ confirmarBorrado() ? '¿Seguro? Pulsa otra vez' : 'Borrar' }}
+        </button>
+      }
+      <span class="spacer"></span>
+      <button type="button" class="btn btn-secondary" (click)="cerrar()">Cancelar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="guardando()">
+        {{ guardando() ? 'Guardando…' : 'Guardar' }}
+      </button>
+    </footer>
+  </form>
+</dialog>

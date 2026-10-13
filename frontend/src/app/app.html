@@ -1,0 +1,175 @@
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19.5 2.5l2 2-3.3 3.3-.9-.1-4.6 4.6a4.4 4.4 0 0 1-1.1 4.9c-1.6 1.6-4 2.3-6 1.3l-1.1 1.1a1 1 0 0 1-1.4-1.4l1.1-1.1c-1-2-.3-4.4 1.3-6a4.4 4.4 0 0 1 4.9-1.1l4.6-4.6-.1-.9z" fill="currentColor" />
+      </svg>
+      <div>
+        <h1>Cuerdas Guitarra</h1>
+        <p class="subtitle">Registro de compras y cambios de cuerdas</p>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="nuevo()">+ Añadir cuerdas</button>
+  </div>
+</header>
+
+<main class="container">
+  <nav class="tabs" aria-label="Tipo de guitarra">
+    <button class="tab" [class.active]="filtroTipo() === null" (click)="filtroTipo.set(null)">
+      Todas <span class="count">{{ service.cuerdas().length }}</span>
+    </button>
+    @for (t of tipos; track t.valor) {
+      <button class="tab" [class.active]="filtroTipo() === t.valor" (click)="filtroTipo.set(t.valor)">
+        <i class="dot" [attr.data-tipo]="t.valor"></i>{{ t.etiqueta }}
+        <span class="count">{{ conteoPorTipo()[t.valor] }}</span>
+      </button>
+    }
+  </nav>
+
+  <section class="stats" aria-label="Resumen">
+    <div class="stat">
+      <span class="stat-label">Sets registrados</span>
+      <span class="stat-value">{{ resumen().sets }}</span>
+      <span class="stat-sub">{{ resumen().packs }} packs en total</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Último cambio</span>
+      @if (resumen().ultimoCambio; as c) {
+        <span class="stat-value">{{ textoDias(c.fechaCambio!) }}</span>
+        <span class="stat-sub" [title]="c.descripcion">{{ c.fechaCambio | date: 'longDate' }} · {{ c.descripcion }}</span>
+      } @else {
+        <span class="stat-value muted">—</span>
+      }
+    </div>
+    <div class="stat">
+      <span class="stat-label">Última compra</span>
+      @if (resumen().ultimaCompra; as c) {
+        <span class="stat-value">{{ textoDias(c.fechaCompra!) }}</span>
+        <span class="stat-sub" [title]="c.descripcion">{{ c.fechaCompra | date: 'longDate' }} · {{ c.descripcion }}</span>
+      } @else {
+        <span class="stat-value muted">—</span>
+      }
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <input
+      class="search"
+      type="search"
+      placeholder="Buscar marca, modelo, calibre…"
+      [value]="busqueda()"
+      (input)="busqueda.set($any($event.target).value)"
+      aria-label="Buscar"
+    />
+    <select [value]="orden()" (change)="orden.set($any($event.target).value)" aria-label="Ordenar">
+      <option value="reciente">Más recientes</option>
+      <option value="antiguo">Más antiguas</option>
+      <option value="nombre">Nombre</option>
+    </select>
+    <div class="view-toggle" role="group" aria-label="Vista">
+      <button [class.active]="vista() === 'tarjetas'" (click)="vista.set('tarjetas')">Tarjetas</button>
+      <button [class.active]="vista() === 'tabla'" (click)="vista.set('tabla')">Tabla</button>
+    </div>
+  </div>
+
+  @if (service.cargando()) {
+    <p class="empty">Cargando…</p>
+  } @else if (service.error(); as e) {
+    <div class="empty">
+      <p>{{ e }}</p>
+      <button class="btn btn-secondary" (click)="service.cargar()">Reintentar</button>
+    </div>
+  } @else if (visibles().length === 0) {
+    <p class="empty">No hay cuerdas que coincidan.</p>
+  } @else if (vista() === 'tarjetas') {
+    <section class="grid">
+      @for (c of visibles(); track c.id) {
+        <article class="card">
+          <button class="card-image" (click)="c.imagenUrl ? ampliada.set(c) : editar(c)" [attr.aria-label]="'Ver ' + c.descripcion">
+            @if (c.imagenUrl) {
+              <img [src]="c.imagenUrl" [alt]="c.descripcion" loading="lazy" />
+            } @else {
+              <span class="no-image">Sin imagen</span>
+            }
+          </button>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="chip"><i class="dot" [attr.data-tipo]="c.tipo"></i>{{ etiqueta[c.tipo] }}</span>
+              @if (c.cantidad > 1) {
+                <span class="chip chip-plain">× {{ c.cantidad }}</span>
+              }
+            </div>
+            <h3 class="card-title">{{ c.descripcion }}</h3>
+            <dl class="dates">
+              <div>
+                <dt>Compra</dt>
+                <dd>{{ c.fechaCompra ? (c.fechaCompra | date: 'mediumDate') : '—' }}</dd>
+              </div>
+              <div>
+                <dt>Cambio</dt>
+                <dd>{{ c.fechaCambio ? (c.fechaCambio | date: 'mediumDate') : '—' }}</dd>
+              </div>
+            </dl>
+            @if (c.notas) {
+              <p class="notes">{{ c.notas }}</p>
+            }
+          </div>
+          <footer class="card-actions">
+            @if (!c.fechaCambio) {
+              <button class="link-btn" (click)="cambioHoy(c)">Montadas hoy</button>
+            }
+            <span class="spacer"></span>
+            <button class="link-btn" (click)="editar(c)">Editar</button>
+          </footer>
+        </article>
+      }
+    </section>
+  } @else {
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Cuerdas</th>
+            <th>Guitarra</th>
+            <th class="num">Cant.</th>
+            <th>Compra</th>
+            <th>Cambio</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (c of visibles(); track c.id) {
+            <tr>
+              <td class="thumb">
+                @if (c.imagenUrl) {
+                  <img [src]="c.imagenUrl" alt="" loading="lazy" />
+                }
+              </td>
+              <td>{{ c.descripcion }}</td>
+              <td class="nowrap"><i class="dot" [attr.data-tipo]="c.tipo"></i>{{ etiqueta[c.tipo] }}</td>
+              <td class="num">{{ c.cantidad }}</td>
+              <td class="nowrap">{{ c.fechaCompra ? (c.fechaCompra | date: 'dd/MM/yyyy') : '—' }}</td>
+              <td class="nowrap">{{ c.fechaCambio ? (c.fechaCambio | date: 'dd/MM/yyyy') : '—' }}</td>
+              <td><button class="link-btn" (click)="editar(c)">Editar</button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</main>
+
+@if (ampliada(); as c) {
+  <div class="lightbox" (click)="ampliada.set(null)" role="dialog" aria-modal="true">
+    <figure (click)="$event.stopPropagation()">
+      <img [src]="c.imagenUrl" [alt]="c.descripcion" />
+      <figcaption>
+        <span>{{ c.descripcion }}</span>
+        <button class="link-btn" (click)="ampliada.set(null); editar(c)">Editar</button>
+      </figcaption>
+    </figure>
+  </div>
+}
+
+<app-cuerda-form />

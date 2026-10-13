@@ -1,0 +1,17 @@
+# Backend (Maven)
+backend/target/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Excel lock files
+~$*.xlsx
+
+# Local environment overrides for docker compose
+.env

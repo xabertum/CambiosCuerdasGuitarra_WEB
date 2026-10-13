@@ -1,0 +1,227 @@
+[
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Pyramid Gold True Vintage Flatwound 013-018-026w-036w-047w-056",
+    "cantidad": 1,
+    "fechaCompra": "2010-03-17",
+    "fechaCambio": "2014-04-17",
+    "notas": null,
+    "imagen": "electrica_5.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Ernie Ball EB 2627 Beefy Slinky 011 - 015 - 022p - 030 - 042 – 054",
+    "cantidad": 1,
+    "fechaCompra": "2010-03-17",
+    "fechaCambio": null,
+    "notas": "Fechas originales: 17.03.10 / 00.08.13",
+    "imagen": "electrica_6.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "D'Addario XL Chromes Flat Wound Jazz Light: .011 .015 .022f .030f .040f .050f",
+    "cantidad": 1,
+    "fechaCompra": "2014-03-18",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "electrica_7.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Elixir Custom Light .009 .011 .016 .026 .036 .046",
+    "cantidad": 1,
+    "fechaCompra": "2014-04-16",
+    "fechaCambio": "2014-04-16",
+    "notas": null,
+    "imagen": "electrica_8.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "DR Pure Blues Pure Nickel Lite & Heavy - 9 11 16 26 36 46",
+    "cantidad": 1,
+    "fechaCompra": "2014-05-05",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "electrica_9.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "GHS Big Core Nickel Rockers Light: BCL - .0105 .0135 .018p .028 .038 .048",
+    "cantidad": 1,
+    "fechaCompra": "2014-05-05",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "electrica_10.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Thomastik JS111 Light Flatwound Jazz Swing: .011 .015 .019 0.25 .035 .047",
+    "cantidad": 1,
+    "fechaCompra": "2014-05-31",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "electrica_11.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Ernie Ball 2223 (009 - 042)",
+    "cantidad": 1,
+    "fechaCompra": null,
+    "fechaCambio": "2020-08-08",
+    "notas": "Fechas originales: SIn fecha compra / 08.08.20",
+    "imagen": "electrica_12.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Daddario EXL130 Extra Super Light (8-38)",
+    "cantidad": 1,
+    "fechaCompra": "2020-10-02",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "electrica_13.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Daddario EXL130 Extra Super Light (8-38)",
+    "cantidad": 1,
+    "fechaCompra": "2020-10-02",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "electrica_14.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Elixir 19027 Optiweb 09-46. Cuerdas guitarra eléctrica",
+    "cantidad": 1,
+    "fechaCompra": "2020-10-02",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "electrica_15.jpeg"
+  },
+  {
+    "tipo": "ELECTRICA",
+    "descripcion": "Orphee RX15 9-42 Electric Guitar Strings (x5)",
+    "cantidad": 5,
+    "fechaCompra": "2025-08-25",
+    "fechaCambio": "2026-08-25",
+    "notas": null,
+    "imagen": "electrica_16.png"
+  },
+  {
+    "tipo": "ACUSTICA",
+    "descripcion": "Martin Guitars M150 - (Pack 3) 013-017-026w-035w-045w-056w",
+    "cantidad": 3,
+    "fechaCompra": "2010-01-21",
+    "fechaCambio": "2014-03-18",
+    "notas": null,
+    "imagen": "acustica_5.jpeg"
+  },
+  {
+    "tipo": "ACUSTICA",
+    "descripcion": "(x2) DR Rare Phosphor Bronze 12-16-24-32-42-54",
+    "cantidad": 2,
+    "fechaCompra": "2014-03-18",
+    "fechaCambio": "2014-05-03",
+    "notas": null,
+    "imagen": "acustica_6.jpeg"
+  },
+  {
+    "tipo": "ACUSTICA",
+    "descripcion": "DR Sunbeam Phosphor Bronze 12-16-24-32-42-54",
+    "cantidad": 1,
+    "fechaCompra": "2014-03-18",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "acustica_7.jpeg"
+  },
+  {
+    "tipo": "ACUSTICA",
+    "descripcion": "DR Zebra Nickel-Plated Steel / Phosphor Bronze Acoustic-Electric Medium - 12 16 24 32 42 54",
+    "cantidad": 1,
+    "fechaCompra": "2014-05-05",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "acustica_8.jpeg"
+  },
+  {
+    "tipo": "ACUSTICA",
+    "descripcion": "GHS White Bronze Acoustic Light .012 .016 .024 .032 .042 .054",
+    "cantidad": 1,
+    "fechaCompra": "2014-05-05",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "acustica_9.jpeg"
+  },
+  {
+    "tipo": "ACUSTICA",
+    "descripcion": "Daddario EZ890 Super Light (9-45)",
+    "cantidad": 1,
+    "fechaCompra": "2020-12-08",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "acustica_10.jpeg"
+  },
+  {
+    "tipo": "ACUSTICA",
+    "descripcion": "(x2) Martin MA170 Authentic SP 80/20 Bronze Extra Light 10-47",
+    "cantidad": 2,
+    "fechaCompra": "2020-12-08",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "acustica_11.jpeg"
+  },
+  {
+    "tipo": "CLASICA",
+    "descripcion": "Set Pro-Arte Composite Clear Nylon/Polished Norm Tension",
+    "cantidad": 1,
+    "fechaCompra": "2010-03-17",
+    "fechaCambio": null,
+    "notas": "Etiqueta: DADDARIO EJ45LP",
+    "imagen": "clasica_5.jpeg"
+  },
+  {
+    "tipo": "CLASICA",
+    "descripcion": "Hannabach 800slt gelb Super Low Tension",
+    "cantidad": 1,
+    "fechaCompra": "2010-03-17",
+    "fechaCambio": null,
+    "notas": "Etiqueta: HANNABACH 800SLT GELB",
+    "imagen": "clasica_6.jpeg"
+  },
+  {
+    "tipo": "CLASICA",
+    "descripcion": "DR Medium Tension Silver-Plated Nylon",
+    "cantidad": 1,
+    "fechaCompra": "2014-05-05",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "clasica_7.jpeg"
+  },
+  {
+    "tipo": "CLASICA",
+    "descripcion": "GHS Vanguard Classics",
+    "cantidad": 1,
+    "fechaCompra": "2014-05-05",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "clasica_8.jpeg"
+  },
+  {
+    "tipo": "CLASICA",
+    "descripcion": "Hannabach 815 SLT Super Low Tension",
+    "cantidad": 1,
+    "fechaCompra": "2026-10-13",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "clasica_9.jpeg"
+  },
+  {
+    "tipo": "CLASICA",
+    "descripcion": "Knobloch Actives 200ADN Nylon SN",
+    "cantidad": 1,
+    "fechaCompra": "2026-10-13",
+    "fechaCambio": null,
+    "notas": null,
+    "imagen": "clasica_10.png"
+  }
+]
