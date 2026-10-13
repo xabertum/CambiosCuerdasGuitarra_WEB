@@ -55,8 +55,23 @@ export class CuerdaForm {
     this.dialog().nativeElement.close();
   }
 
+  /**
+   * Closes when the click lands on the backdrop (the dialog element itself).
+   * Must return void: a handler returning false makes Angular call preventDefault(),
+   * which would cancel every click inside the dialog (form submit, file picker…).
+   */
+  protected cerrarSiFondo(event: MouseEvent): void {
+    if (event.target === this.dialog().nativeElement) {
+      this.cerrar();
+    }
+  }
+
   protected hoy(campo: 'fechaCompra' | 'fechaCambio'): void {
     this.form.controls[campo].setValue(hoyIso());
+  }
+
+  protected quitarFecha(campo: 'fechaCompra' | 'fechaCambio'): void {
+    this.form.controls[campo].setValue('');
   }
 
   protected elegirImagen(event: Event): void {

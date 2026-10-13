@@ -1,4 +1,4 @@
-<dialog #dialog class="dialog" (click)="$event.target === dialog && cerrar()">
+<dialog #dialog class="dialog" (click)="cerrarSiFondo($event)">
   <form [formGroup]="form" (ngSubmit)="guardar()" class="dialog-body">
     <header class="dialog-header">
       <h2>{{ editando() ? 'Editar set de cuerdas' : 'Nuevo set de cuerdas' }}</h2>
@@ -31,6 +31,9 @@
         <div class="with-action">
           <input type="date" formControlName="fechaCompra" />
           <button type="button" class="link-btn" (click)="hoy('fechaCompra')">Hoy</button>
+          @if (form.controls.fechaCompra.value) {
+            <button type="button" class="icon-btn" (click)="quitarFecha('fechaCompra')" aria-label="Quitar fecha" title="Quitar fecha">✕</button>
+          }
         </div>
       </label>
 
@@ -39,6 +42,9 @@
         <div class="with-action">
           <input type="date" formControlName="fechaCambio" />
           <button type="button" class="link-btn" (click)="hoy('fechaCambio')">Hoy</button>
+          @if (form.controls.fechaCambio.value) {
+            <button type="button" class="icon-btn" (click)="quitarFecha('fechaCambio')" aria-label="Quitar fecha" title="Quitar fecha">✕</button>
+          }
         </div>
       </label>
 
