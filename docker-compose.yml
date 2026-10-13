@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_DB: cuerdas
       POSTGRES_USER: ${DB_USER:-cuerdas}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-cuerdas}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Define DB_PASSWORD en el fichero .env}
     volumes:
       - db-data:/var/lib/postgresql
     healthcheck:
@@ -20,7 +20,7 @@ services:
     environment:
       DB_URL: jdbc:postgresql://db:5432/cuerdas
       DB_USER: ${DB_USER:-cuerdas}
-      DB_PASSWORD: ${DB_PASSWORD:-cuerdas}
+      DB_PASSWORD: ${DB_PASSWORD:?Define DB_PASSWORD en el fichero .env}
     depends_on:
       db:
         condition: service_healthy

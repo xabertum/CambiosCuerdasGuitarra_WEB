@@ -10,8 +10,8 @@ backend/target/
 Thumbs.db
 .DS_Store
 
-# Excel lock files
-~$*.xlsx
+# Excel original (datos personales; el seed ya está en backend/src/main/resources/seed)
+*.xlsx
 
 # Local environment overrides for docker compose
 .env
